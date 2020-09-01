@@ -8,8 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "@mdx-js/loader": "^1.6.16",
+    "@mdx-js/react": "^1.6.16",
+    "@next/mdx": "^9.5.2",
+    "emotion-theming": "^10.0.27",
     "next": "9.5.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-feather": "^2.0.8",
+    "react-scrollable-anchor": "^0.6.1",
+    "styled-components": "^5.1.1",
+    "zenscroll": "^4.0.2"
   }
 }

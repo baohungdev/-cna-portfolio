@@ -1,65 +1,84 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Box, Flex, SimpleGrid, useColorMode } from "@chakra-ui/core";
+import Header from "../components/Header";
+import React, { useEffect } from "react";
+import { Body, BodyTitleLink } from "../components/Generic";
+import { projects } from "../public/constants/projects";
+import { ProjectLink } from "../components/ProjectLink";
+import { intro } from "../public/constants/intro";
+import { ExperienceItem } from "../components/ExperienceItem";
+import { experiences } from "../public/constants/experience";
+import { Skill } from "../components/Skill";
+import {
+  APOLLO_CLIENT,
+  FIREBASE,
+  GRAPHQL,
+  JAVASCRIPT,
+  NEXTJS,
+  REACT_NATIVE,
+  REDUX,
+  TYPESCRIPT,
+  SASS,
+} from "../public/constants/icons";
+import NavBar from "../components/NavBar";
+import {
+  ABOUT_ME,
+  EXPERIENCE,
+  TECHNOLOGIES,
+  PROJECTS,
+} from "../public/constants/links";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Flex align={"center"} direction={"column"} justifyContent={"center"}>
+      <NavBar />
+      <Box p={8}>
+        <Header />
+        <Box
+          w={[
+            "100%", // base
+            450, // 480px upwards
+            700, // 768px upwards
+            900, // 992px upwards
+          ]}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
-}
+          <Box mt={8}>
+            <BodyTitleLink id={ABOUT_ME}>{"About Me"}</BodyTitleLink>
+            <Body>{intro}</Body>
+          </Box>
+          <Flex align={"center"} direction={"column"} justify={"center"} mt={8}>
+            <BodyTitleLink id={TECHNOLOGIES}>{"Technologies"}</BodyTitleLink>
+            <SimpleGrid columns={[1, 1, 2, 2]} spacingX={32}>
+              <Skill label={JAVASCRIPT}>{"JavaScript"}</Skill>
+              <Skill label={TYPESCRIPT}>{"TypeScript"}</Skill>
+              <Skill label={REACT_NATIVE}>{"React"}</Skill>
+              <Skill label={NEXTJS}>{"NextJS"}</Skill>
+
+              <Skill label={GRAPHQL}>{"GraphQL"}</Skill>
+              <Skill label={APOLLO_CLIENT}>{"Apollo Client"}</Skill>
+
+              <Skill label={REDUX}>{"Redux"}</Skill>
+              <Skill label={FIREBASE}>{"Firebase"}</Skill>
+              <Skill label={SASS}>{"Sass"}</Skill>
+            </SimpleGrid>
+          </Flex>
+          <Box mt={8}>
+            <BodyTitleLink id={PROJECTS}>{"Projects"}</BodyTitleLink>
+            <SimpleGrid minChildWidth={["100%", "100%", 350, 350]}>
+              {projects.map((project) => (
+                <ProjectLink key={project.link} {...project} />
+              ))}
+            </SimpleGrid>
+          </Box>
+          <Box mt={8}>
+            <BodyTitleLink id={EXPERIENCE}>{"Experience"}</BodyTitleLink>
+            {experiences.reverse().map((experience) => (
+              <ExperienceItem key={experience.title} {...experience} />
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Flex>
+  );
+};
+
+export default Home;
