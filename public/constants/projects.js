@@ -14,7 +14,7 @@ import {
 export const projects = [
   {
     labels: [TYPESCRIPT, REACT_NATIVE, APOLLO_CLIENT, GRAPHQL, NEXTJS],
-    website: "https://final-advance-reactjs-nordic-coder-582lkso0k.vercel.app/",
+    website: "https://phonestore.vercel.app/",
     link: "https://github.com/baohungdev/final-advance-reactjs-NordicCoder",
     subTitle: "A mobile application for ecommerce store",
     title: "hot-phone-store",
